@@ -7,8 +7,8 @@ const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 const jwtSecret = process.env.JWT_SECRET;
-const supabaseUrl = process.env.SUPABASE_URL; //'https://yiufarozroxrqadlpqqd.supabase.co';
-const supabaseSecret = process.env.SUPABASE_SECRET_KEY; //'sb_publishable_H-nWcNHNLpZB9G8VY-h6Lw_NL6-MCXC';
+const supabaseUrl ='https://yiufarozroxrqadlpqqd.supabase.co';
+const supabaseSecret ='sb_publishable_H-nWcNHNLpZB9G8VY-h6Lw_NL6-MCXC';
 if (!jwtSecret || !supabaseUrl || !supabaseSecret) {
   throw new Error('Faltan las variables de entorno JWT_SECRET, SUPABASE_URL o SUPABASE_SECRET_KEY');
 }
