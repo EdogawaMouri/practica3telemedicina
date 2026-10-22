@@ -17,6 +17,9 @@ const supabase = createClient(supabaseUrl, supabaseSecret, {
 });
 
 app.use('/appCliente', express.static('cliente_rest'));
+
+app.get("/", function(req, res) {res.redirect("/appCliente/");}); //para que funcione con el .com
+
 app.use(express.json());
 
 function errorBD(res, error) {
