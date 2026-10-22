@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Rest Rubén García Ríos</title>
+        <script src="rest.js"></script>
+        <script src="main.js"></script>
+        <!--Rubén García Ríos Ingeniería Biomédica-->
+        <style>
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f4f4f6;
+                color: #222;
+                margin: 0;
+                padding: 40px;
+            }
+
+            h1 {
+                color: #111;
+                margin-bottom: 30px;
+                border-bottom: 2px solid #dcdcdc;
+                padding-bottom: 10px;
+            }
+
+            h2, h3 {
+                color: #1a1a1a;
+                margin-top: 25px;
+            }
+
+            div {
+                background-color: #ffffff;
+                padding: 20px;
+                margin-bottom: 25px;
+                border: 1px solid #e0e0e0;
+                border-radius: 6px;
+            }
+
+            input, select {
+                padding: 8px;
+                margin: 5px 5px 10px 0;
+                border: 1px solid #cfcfcf;
+                border-radius: 4px;
+                background-color: #fafafa;
+                transition: 0.2s;
+            }
+
+            input:focus, select:focus {
+                outline: none;
+                border: 1px solid #b3d9ff;
+                background-color: #ffffff;
+            }
+
+            button {
+                padding: 8px 14px;
+                border: 1px solid #1a1a1a;
+                background-color: #ffffff;
+                color: #111;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: 0.2s;
+                margin-right: 5px;
+            }
+
+            button:hover {
+                background-color: #b3d9ff;
+                border-color: #1a1a1a;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+                background-color: #ffffff;
+            }
+
+            th {
+                background-color: #e6e6e6;
+                color: #111;
+                padding: 10px;
+                text-align: left;
+                border-bottom: 2px solid #bfbfbf;
+            }
+
+            td {
+                padding: 8px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            tr:hover {
+                background-color: #f0f8ff;
+            }
+
+            #anadirRecurso {
+                margin-top: 15px;
+            }
+
+            #usuario_activo {
+                font-weight: bold;
+                color: #000;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <!--Rubén García Ríos-->
+        <h1>Aplicación Gestor</h1>
+        <!-- Login -->
+
+        <div id="acceso">
+            <h2>Acceso</h2>
+            <input type="text" id="usuario" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contrasenya">
+            <button id="botonLogin">Entrar</button>
+            <button id="botonRegistro">Registrarse</button>
+        </div>
+
+        <!-- Registro -->
+
+        <div id="registro" style="display:none;">
+            <h2>Datos gestor</h2>   
+            <input type="text" id="nombreRegistro" placeholder="Nombre">
+            <input type="text" id="apellidosRegistro" placeholder="Apellidos">
+            <input type="text" id="usuarioRegistro" placeholder="Usuario">
+            <input type="password" id="passwordRegistro" placeholder="Contrasenya">
+            <button id="botonRegistrar">Guardar</button>
+            <button id="botonVolverLogin">Cancelar</button>
+        </div>
+
+        <!-- Inicio -->
+        <div id="inicio" style="display:none;">
+            <h2>Inicio</h2>
+            <p>Bienvenido <span id="usuario_activo"></span> <button id="editarDatos">Editar datos</button></p>
+
+            <h2>Análisis Área</h2>   
+            <button id="botonAnalisis">ANÁLISIS</button>
+            <table id="tablaRanking">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Área médica</th>
+                        <th>Reservas totales</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoRanking">
+                </tbody>
+            </table>
+
+            <h2>Datos área</h2>   
+            <input type="text" id="codigo_postal" placeholder="Codigo Postal">
+            <input type="text" id="nombre_area" placeholder="Nombre area">
+            <button id="botonArea">Crear Area</button>
+
+            <h3>Búsqueda de recursos</h3>
+            <label>Categoría: </label>
+            <select id="filtroCategoria"></select>
+            <label>Modelo: </label>
+            <select id="filtroModelo"></select>
+            <label>Ubicación: </label>
+            <select id="filtroUbicacion"></select>
+            <label>Estado: </label>
+            <select id="filtroEstado">
+                <option value="">Todos</option>
+                <option value="0">Operativo</option>
+                <option value="1">No operativo</option>
+            </select>
+            <button id="buscarRecursos">Buscar</button>
+
+            <h3>Recursos</h3>
+            <table id="tablaRecursos">
+                <tr>
+                    <th>N. Serie</th>
+                    <th>Categoría</th>
+                    <th>Modelo</th>
+                    <th>Ubicación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </table>
+            <button id="anadirRecurso">Añadir Recurso</button>
+            <button id="salir">Salir</button>
+            <p> Avisos </p>
+            <table id="tablaAvisos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Origen</th>
+                        <th>Texto</th>
+                    </tr>
+                </thead>
+
+                <tbody id="cuerpoAvisos">
+
+                </tbody>
+            </table>
+        </div>
+
+        
+        
+        <!-- Ficha -->
+         <div id="ficha" style="display:none;">
+            <h2>Recurso</h2>
+            <h3>Datos recurso</h3>
+
+         </div>
+
+        <script src="rest.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
